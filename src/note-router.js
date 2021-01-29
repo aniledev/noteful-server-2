@@ -10,7 +10,7 @@ const serializedNote = (note) => ({
   id: note.noteid,
   name: xss(note.notename),
   content: xss(note.content),
-  folderId: note.folderid,
+  folderid: note.folderid,
   modified: note.modified,
 });
 
@@ -29,7 +29,7 @@ noteRouter
   .post(bodyParser, (req, res, next) => {
     // use object destructing to access the req body and the newNote object
     const { name, content, folderId } = req.body;
-    const newNote = { name, content, folderId };
+    const newNote = { notename: name, content: content, folderid: folderId };
 
     // validate to ensure that each field of the request body is present/entered
     for (const [key, value] of Object.entries(newNote))
