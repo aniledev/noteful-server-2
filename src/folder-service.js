@@ -22,8 +22,8 @@ const foldersService = {
     return knex("folders").where("folderid", id).delete();
   },
   // create method to update a folder
-  updateFolder(knex, updateFolder) {
-    return knex("folders").update(updateFolder);
+  updateFolder(knex, id, updatedFolder) {
+    return knex("folders").where("folderid", id).update(updatedFolder);
   },
 };
 

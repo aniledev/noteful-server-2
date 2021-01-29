@@ -75,13 +75,13 @@ folderRouter
   .patch(bodyParser, (req, res, next) => {
     // perform folder validation before the patch request
     const { name } = req.body;
-    const folderToUpdate = { name };
+    const folderToUpdate = { foldername: name };
 
     const values = Object.values(folderToUpdate).filter(Boolean).length;
 
     // if the object is empty
     if (values === 0)
-      return rest
+      return res
         .status(400)
         .json({ error: { message: `Request body must have a name.` } });
     foldersService
@@ -90,7 +90,7 @@ folderRouter
         // use .end() to end the request response cycle because nothing is being sent back
         res.status(204).end();
       })
-      .catch();
+      .catch(next);
   });
 
 module.exports = folderRouter;
