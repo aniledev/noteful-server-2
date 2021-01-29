@@ -45,13 +45,27 @@ folderRouter
 
 // create get, delete, and patch routes
 folderRouter
-  .route("/:folderId")
+  .route("/:folderid")
+  .all((req, res, next) => {
+    foldersService
+      .getFolderById(req.app.get("db"), req.params.folderid)
+      .then((folder) => {
+        if (!folder) {
+          return res.status(404).json({
+            error: { message: `Folder doesn't exist` },
+          });
+        }
+        res.folder = folder;
+        next();
+      })
+      .catch(next);
+  })
   .get((req, res, next) => {
     res.json(serializedFolder(res.folder));
   })
   .delete((req, res, next) => {
     foldersService
-      .deleteFolder(req.app.get("db"), req.params.folderId)
+      .deleteFolder(req.app.get("db"), req.params.folderid)
       .then(() => {
         // .end() is necessary to end the request response cycle as nothing is sent back using .send()
         res.status(204).end();
