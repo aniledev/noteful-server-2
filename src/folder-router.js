@@ -85,7 +85,7 @@ folderRouter
         .status(400)
         .json({ error: { message: `Request body must have a name.` } });
     foldersService
-      .updateFolder(req.app.get("db"), req.params.folderId, folderToUpdate)
+      .updateFolder(req.app.get("db"), req.params.folderid, folderToUpdate)
       .then(() => {
         // use .end() to end the request response cycle because nothing is being sent back
         res.status(204).end();

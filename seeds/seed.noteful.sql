@@ -4,7 +4,7 @@ INSERT INTO folders
 VALUES
     ('fruits'),
     ('clothes'),
-    ('colorspurple');
+    ('colors');
 INSERT INTO notes
     (noteName, content, folderId)
 VALUES
