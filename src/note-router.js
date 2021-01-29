@@ -80,7 +80,11 @@ noteRouter
   })
   .patch(bodyParser, (req, res, next) => {
     const { name, content, folderId } = req.body;
-    const noteToUpdate = { name, content, folderId };
+    const noteToUpdate = {
+      notename: name,
+      content: content,
+      folderid: folderId,
+    };
 
     const numberOfValues = Object.values(noteToUpdate).filter(Boolean).length;
     if (numberOfValues === 0)
