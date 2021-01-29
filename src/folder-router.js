@@ -33,7 +33,7 @@ folderRouter
       });
     }
     foldersService
-      .insertFolders(res.app.get("db"), newFolder)
+      .insertFolder(res.app.get("db"), newFolder)
       .then((folder) => {
         res
           .status(201)
