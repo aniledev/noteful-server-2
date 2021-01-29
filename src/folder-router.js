@@ -25,7 +25,7 @@ folderRouter
   })
   .post(bodyParser, (req, res, next) => {
     const { name } = req.body;
-    const newFolder = { name };
+    const newFolder = { foldername: name };
 
     if (!newFolder) {
       return res.status(400).json({
