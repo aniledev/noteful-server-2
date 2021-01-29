@@ -1,14 +1,13 @@
 
-insert into folders
+INSERT INTO folders
     (folderName)
-values
+VALUES
     ('fruits'),
     ('clothes'),
     ('colorspurple');
-
-insert into notes
+INSERT INTO notes
     (noteName, content, folderId)
-values
+VALUES
     ('apple' , 'apple', 1 ),
     ('shirt', 'shirt' , 2),
     ('grapes' , 'grapes' , 1),
